@@ -1,0 +1,55 @@
+﻿<html ng-app="phonecatApp">
+<head>
+    <link href="../Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <script src="../Scripts/angular.js"></script>
+</head>
+<body>
+    <div ng-controller="PhoneListCtrl">
+  <ul>
+    <li ng-repeat="phone in phones">
+      <span>{{phone.name}}</span>
+      <p>{{phone.snippet}}</p>
+    </li>
+  </ul></div>
+    <div ng-controller="my1">
+        <p> 姓名: {{my2.u}} {{my2.fun1()}}</p>
+          <p>H: <input type="text" ng-model="jModel.m" /></p>
+          <p>H: <input type="text" ng-model="jModel.m" /></p>
+    </div>
+    <script>
+        var phonecatApp = angular.module('phonecatApp', []);
+
+        phonecatApp.controller('PhoneListCtrl', function ($scope) {
+            $scope.phones = [
+              {
+                  'name': 'Nexus S',
+                  'snippet': 'Fast just got faster with Nexus S.'
+              },
+              {
+                  'name': 'Motorola XOOM™ with Wi-Fi',
+                  'snippet': 'The Next, Next Generation tablet.'
+              },
+              {
+                  'name': 'MOTOROLA XOOM™',
+                  'snippet': 'The Next, Next Generation tablet.'
+              }
+            ];
+        });
+
+        phonecatApp.controller('my1', function ($scope) {
+            $scope.my2 = {
+                u: 'aaa',
+                fun1: function () { return this.u + '22';}
+            };
+            $scope.jModel = { m: 12, n: "cd" };
+        });
+        //不能下面这样写
+      //function my1($scope) {
+      //      $scope.my2 = {
+      //          u: 'aaa',
+      //          fun1: function () { return this.u + '22'; }
+      //      };
+      //  }
+    </script>
+</body>
+</html>
